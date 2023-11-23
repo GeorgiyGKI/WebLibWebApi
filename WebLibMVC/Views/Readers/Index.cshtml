@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ReaderViewModel>
+@{
+    ViewData["Title"] = "Reader List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="text-center">
+        <div class="col">
+            <h2>Readers</h2>
+            <a class="btn btn-success" asp-action="Create">Create</a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><h5>FirstName</h5></th>
+                    <th><h5>LastName</h5></th>
+                    <th><h5>Address</h5></th>
+                    <th><h5>PhoneNumber</h5></th>
+                    <th><h5>RegistrationDate</h5></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <br />
+                @foreach (var reader in Model)
+                {
+                    <tr>
+                        <td>@reader.FirstName</td>
+                        <td>@reader.LastName</td>
+                        <td>@reader.Address</td>
+                        <td>@reader.PhoneNumber</td>
+                        <td>@reader.RegistrationDate.ToShortDateString()</td>
+                        <td>
+                            <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline" asp-route-id="@reader.Id">Edit</a>
+                            <a asp-action="Delete" class="btn-sm btn-danger no-underline" asp-route-id="@reader.Id">Delete</a>
+                            <a asp-action="Index" asp-controller="Transactions" class="btn-sm btn-warning no-underline" asp-route-readerId="@reader.Id">transactions</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

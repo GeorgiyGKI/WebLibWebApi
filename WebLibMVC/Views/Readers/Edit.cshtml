@@ -1,0 +1,50 @@
+﻿@model ReaderViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mt-5">
+    @if (User.IsInRole("Administrator"))
+    {
+        <h2 class="text-primary">Edit reader</h2>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-3 text-start">
+                <form method="post">
+                    <br />
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                    <input asp-for="FirstName" placeholder="Enter first name (max 30 characters)" class="form-control" />
+
+                    <label asp-for="LastName" class="control-label"></label>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                    <input asp-for="LastName" placeholder="Enter last name (max 30 characters)" class="form-control" />
+
+                    <label asp-for="Address" class="control-label"></label>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                    <input asp-for="Address" placeholder="Enter address (max 30 characters)" class="form-control" />
+
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    <input asp-for="PhoneNumber" placeholder="Enter phone number (max 15 characters)" class="form-control" />
+
+                    <label asp-for="RegistrationDate" class="control-label"></label>
+                    <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                    <input asp-for="RegistrationDate" class="form-control" />
+                    <br />
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Send</button>
+                        <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1>You don't have accsess to this page</h1>
+    }
+   
+</div>
+

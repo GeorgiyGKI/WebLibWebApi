@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TransactionStatusViewModel>
+@{
+    ViewData["Title"] = "TransactionStatuses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="text-center">
+        <div class="col">
+            <h2>Transaction statuses</h2>
+            <a class="btn btn-success" asp-action="Create">Create</a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><h5>Status</h5></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <br />
+                @foreach (var TransactionStatuses in Model)
+                {
+                    <tr>
+                        <td>@TransactionStatuses.Name</td>
+                        <td>
+                            <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline" asp-route-id="@TransactionStatuses.Id">Edit</a>
+                            <a asp-action="Delete" class="btn-sm btn-danger no-underline" asp-route-id="@TransactionStatuses.Id">Delete</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model AuthorizeViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row text-center justify-content-center mt-5">
+    <h2>Login</h2>
+    <div class="col-md-5 text-start">
+        <form asp-action="Login">
+            <br />
+            <label asp-for="Name" class="control-label"></label>
+            <span asp-validation-for="Name" class="text-danger"></span>
+            <input asp-for="Name" placeholder="Enter a password (max 30 characters)" class="form-control mb-3" />
+
+            <label asp-for="Password" class="control-label"></label>
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input asp-for="Password" placeholder="Enter a password (max 30 characters)" class="form-control mb-3" />
+            @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+            {
+                <p class="alert alert-danger">@TempData["ErrorMessage"]</p>
+            }
+            <br />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Login</button>
+                <a class="btn btn-secondary mt-3" asp-controller="Home" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BookViewModel>
+@{
+    ViewData["Title"] = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row justify-content-center mt-5">
+    <div class="text-center">
+        <h2>Books</h2>
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="btn btn-success" asp-action="Create">Create</a>
+        }
+    </div>
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><h5></h5></th>
+                    <th><h5>Title</h5></th>
+                    <th><h5>Author</h5></th>
+                    <th><h5>Year</h5></th>
+                    <th><h5>Genre</h5></th>
+                    <th><h5>Quantity</h5></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <br />
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@Url.Action("GetImage", "Books", new { id = book.Id })" width="200" alt="Image" />
+                        </td>
+                        <td>@book.Title</td>
+                        <td>@book.AuthorName</td>
+                        <td>@book.Year</td>
+                        <td>@book.GenreName</td>
+                        <td>@book.Quantity</td>
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <td>
+                                <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline" asp-route-id="@book.Id">Edit</a>
+                                <a asp-action="Delete" class="btn-sm btn-danger no-underline" asp-route-id="@book.Id">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* <script>
+    $(document).ready(function () {
+        $('.author-name').each(function () {
+            var authorId = $(this).data('author-id');
+            var url = '@Url.Action("GetAuthor", "Authors")' + '?id=' + authorId;
+
+            // Выполняем AJAX-запрос для получения имени автора
+            $.get(url, function (data) {
+                $(this).text(data.authorName); // Предполагается, что сервер возвращает имя автора в свойстве authorName
+            });
+        });
+    });
+</script>
+
+ *@

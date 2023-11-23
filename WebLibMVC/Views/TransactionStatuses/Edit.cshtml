@@ -1,0 +1,33 @@
+﻿@model TransactionStatusViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mt-5">
+    @if (User.IsInRole("Administrator"))
+    {
+        <h2 class="text-primary">Edit transaction status</h2>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-3 text-start">
+                <form method="post">
+                    <br />
+                    <label asp-for="Name" class="control-label"></label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <input asp-for="Name" placeholder="Enter name (max 15 characters)" class="form-control" />
+                    <br />
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-3">Send</button>
+                        <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1>You don't have accsess to this page</h1>
+    }
+</div>
+

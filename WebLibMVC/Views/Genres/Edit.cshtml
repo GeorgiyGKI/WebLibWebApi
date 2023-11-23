@@ -1,0 +1,32 @@
+﻿@model GenreViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center mt-5">
+    @if (User.IsInRole("Administrator"))
+    {
+        <h2 class="text-primary">Edit genre</h2>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-3">
+                <form method="post">
+                    <div class="text-start">
+                        <label asp-for="Name" class="control-label">Genre name</label>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary mt-3 text-center">Update</button>
+                    <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1>You don't have accsess to this page</h1>
+    }
+    
+</div>
+

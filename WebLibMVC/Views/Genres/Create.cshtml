@@ -1,0 +1,33 @@
+﻿@model GenreViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row text-center justify-content-center mt-5">
+    @if (User.IsInRole("Administrator"))
+    {
+        <h2>Create genre</h2>
+        <div class="col-md-3 text-start">
+            <form asp-action="Create">
+                <br />
+                <label asp-for="Name" class="control-label">Genre name</label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="Name" placeholder="Enter name (max 15 characters)" class="form-control mb-3" />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-3">Send</button>
+                    <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <h1>You don't have accsess to this page</h1>
+    }
+   
+</div>
+
+

@@ -1,0 +1,29 @@
+﻿@model TransactionViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row text-center justify-content-center mt-5">
+    @if (User.IsInRole("Administrator"))
+    {
+        <h2>Create transaction</h2>
+        <div class="col-md-3">
+            <form asp-action="Create" asp-route-readerId="@ViewBag.ReaderId">
+                <br />
+                <span asp-validation-for="BookId" class="text-danger"></span>
+                @Html.DropDownListFor(model => model.BookId, Model.Books, "Choose a book", new { @class = "form-control mb-3" })
+                <br />
+                <button type="submit" class="btn btn-primary mt-3">Send</button>
+                <a class="btn btn-secondary mt-3" asp-action="Index" asp-route-readerId="@ViewBag.ReaderId">Cancel</a>
+            </form>
+        </div>
+    }
+    else
+    {
+        <h1>You don't have accsess to this page</h1>
+    }
+   
+</div>
+

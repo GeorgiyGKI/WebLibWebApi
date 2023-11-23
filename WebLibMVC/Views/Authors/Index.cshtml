@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AuthorViewModel>
+@{
+    ViewData["Title"] = "Genre List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-5">
+     @if (!User.Identity.IsAuthenticated)
+    {
+        <h1>You do not have access to view the data on this page</h1>
+    }
+    else
+    {
+        <div class="text-center">
+            <h2>Authors</h2>
+            @if (User.IsInRole("Administrator"))
+            {
+                <a class="btn btn-success" asp-action="Create">Create</a>
+            }
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h5>FirstName</h5></th>
+                        <th><h5>LastName</h5></th>
+                        <th><h5>BirthDate</h5></th>
+                        <th><h5>Country</h5></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <br />
+                    @foreach (var author in Model)
+                    {
+                        <tr>
+                            <td>@author.FirstName</td>
+                            <td>@author.LastName</td>
+                            <td>@author.BirthDate.ToShortDateString()</td>
+                            <td>@author.Country</td>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <td>
+                                    <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline" asp-route-id="@author.Id">Edit</a>
+                                    <a asp-action="Delete" class="btn-sm btn-danger no-underline" asp-route-id="@author.Id">Delete</a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
