@@ -16,8 +16,7 @@ namespace WebLibMVC.Mapping
             CreateMap<TransactionStatusViewModel, TransactionStatusDto>().ReverseMap();
             CreateMap<AuthorizeViewModel, AuthorizeDto>().ReverseMap();
 
-            CreateMap<BookViewModel, BookDto>()
-                   .ForMember(dest => dest.ImageData, opt => opt.MapFrom(src => MappingMethods.FormFileToBytes(src.Image)));
+            CreateMap<BookViewModel, BookDto>();
 
             CreateMap<BookDto, BookViewModel>()
                      .ForMember(dest => dest.Image, opt => opt.MapFrom(src => MappingMethods.ConvertBytesToFormFile(src.ImageData)));

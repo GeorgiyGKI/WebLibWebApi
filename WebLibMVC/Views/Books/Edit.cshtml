@@ -4,49 +4,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center mt-5">
-    @if (User.IsInRole("Administrator"))
-    {
-        <h2 class="text-primary">Edit book</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row justify-content-center heading">
+        <div class="col-4">
+            <h2>Edit book</h2>
 
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-3">
-                <form method="post" enctype="multipart/form-data">
-                    <br />
-                    <label asp-for="Title" class="control-label"></label>
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                    <input asp-for="Title" placeholder="Enter a title name (max 30 characters)" class="form-control mb-3" />
+            <form method="post" enctype="multipart/form-data" class="text-start">
+                <br />
+                <label asp-for="Title" class="control-label"></label>
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <input asp-for="Title" placeholder="Enter a title name (max 30 characters)" class="form-control mb-3" />
 
-                    <span asp-validation-for="AuthorId" class="text-danger"></span>
-                    @Html.DropDownListFor(model => model.AuthorId, Model.Authors, "Select an author", new { @class = "form-control mb-3" })
+                <span asp-validation-for="AuthorId" class="text-danger"></span>
+                @Html.DropDownListFor(model => model.AuthorId, Model.Authors, "Select an author", new { @class = "form-control mb-3" })
 
-                    <span asp-validation-for="GenreId" class="text-danger"></span>
-                    @Html.DropDownListFor(model => model.GenreId, Model.Genres, "Select a genre", new { @class = "form-control mb-3" })
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+                @Html.DropDownListFor(model => model.GenreId, Model.Genres, "Select a genre", new { @class = "form-control mb-3" })
 
-                    <label asp-for="Year" class="control-label"></label>
-                    <span asp-validation-for="Year" class="text-danger"></span>
-                    <input asp-for="Year" placeholder="enter a year of publication (from 0 to 9999 year)" class="form-control mb-3" />
+                <label asp-for="Year" class="control-label"></label>
+                <span asp-validation-for="Year" class="text-danger"></span>
+                <input asp-for="Year" placeholder="enter a year of publication (from 0 to 9999 year)" class="form-control mb-3" />
 
-                    <label asp-for="Quantity" class="control-label"></label>
-                    <span asp-validation-for="Quantity" class="text-danger"></span>
-                    <input asp-for="Quantity" placeholder="enter a quantity (from 0 to 99)" class="form-control mb-3" />
+                <label asp-for="Quantity" class="control-label"></label>
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+                <input asp-for="Quantity" placeholder="enter a quantity (from 0 to 99)" class="form-control mb-3" />
 
-                    <label asp-for="Image" class="control-label"></label>
-                    <input asp-for="Image" type="file" accept=".png, .jpg, .jpeg" class="form-control mb-3" />
-                    <p class=" text-black-50">2 mb - is the maximum available file size </p>
-                    <br />
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary mt-3">Send</button>
-                        <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
-                    </div>
-                </form>
-            </div>
+                <p class=" text-black-50">2 mb - is the maximum available image size </p>
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" type="file" accept=".png, .jpg, .jpeg" class="form-control mb-3" />
+                <div class="text-center mb-5">
+                    <button type="submit" class="createbtn w-button text-black">Update</button>
+                    <a class="closebtn w-button text-white btn-secondary" asp-action="Index" asp-route-pageNumber="1">Cancel</a>
+                </div>
+            </form>
         </div>
-    }
-    else
-    {
-        <h1>You don't have accsess to this page</h1>
-    }
-</div>
+    </div>
+
+}
+else
+{
+    <h1 class="heading">You don't have accsess to this page</h1>
+}
 

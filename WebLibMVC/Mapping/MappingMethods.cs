@@ -4,14 +4,14 @@ namespace WebLibMVC.Mapping
 {
     public static class MappingMethods
     {
-        public static byte[] FormFileToBytes(IFormFile file)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                file.CopyTo(memoryStream);
-                return memoryStream.ToArray();
-            }
-        }
+        //public static byte[] FormFileToBytes(IFormFile file)
+        //{
+        //    using (var memoryStream = new MemoryStream())
+        //    {
+        //        file.CopyTo(memoryStream);
+        //        return memoryStream.ToArray();
+        //    }
+        //}
 
         public static IFormFile ConvertBytesToFormFile(byte[] bytes)
         {

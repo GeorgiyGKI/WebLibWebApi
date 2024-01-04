@@ -51,7 +51,7 @@ namespace WebLibWebApi.Controllers
 
         [HttpPut("{id:int}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> UpdateReader(int id, [FromBody] ReaderDto reader)
         {
             await _service.ReaderService.UpdateReaderAsync(id, reader, trackChanges: true);

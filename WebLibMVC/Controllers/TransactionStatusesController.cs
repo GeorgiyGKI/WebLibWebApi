@@ -7,7 +7,8 @@ namespace WebLibMVC.Controllers
     public class TransactionStatusesController : Controller
     {
         private readonly IServiceManager _service;
-        public TransactionStatusesController(IServiceManager serviceManager) => _service = serviceManager;
+        public TransactionStatusesController(IServiceManager serviceManager) => 
+            _service = serviceManager ?? throw new ArgumentNullException(nameof(serviceManager));
 
         public IActionResult Create()
         {

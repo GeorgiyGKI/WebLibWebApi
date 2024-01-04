@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.ServiceManager;
 using Shared.DataTransferObject;
+using Shared.RequestFeatures;
+using System.Text.Json;
 using WebLibWebApi.Action_Filters;
 
 namespace WebLibWebApi.Controllers
@@ -14,13 +16,22 @@ namespace WebLibWebApi.Controllers
 
         public BooksController(IServiceManager service) => 
             _service = service ?? throw new ArgumentNullException(nameof(service));
-      
-        [HttpGet]
-        public async Task<IActionResult> GetBooks()
+
+        [HttpGet("ListOfBooks")]
+        public async Task<IActionResult> GetAllBooks()
         {
             var books = await _service.BookService.GetAllBooksAsync(trackChanges: false);
-
             return books != null ? Ok(books) : NotFound();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetBooks([FromQuery] BookParameters bookParameters)
+        {
+            var (books, metaData) = await _service.BookService.GetBooksForPageAsync(bookParameters, trackChanges: false);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(metaData));
+
+            return Ok(books);
         }
 
         [HttpGet("{id:int}", Name = "BookById")]

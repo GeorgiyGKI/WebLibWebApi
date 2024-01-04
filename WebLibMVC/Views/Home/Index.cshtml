@@ -2,7 +2,130 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="about">
+    <div class="container ">
+        <h1 class="heading">
+            Description of the technical assignment for
+            <br>
+            a WEB API project
+        </h1>
+        <div>
+            <p class="paragraph">
+                This site first of all is demonstration how I have learned how to work
+                with Asp net core in frontend and backend.
+            </p>
+            <p class="paragraph">
+                This site consist of 2 project : Asp net Core Web Api (backend) Asp net
+                Core Mvc (fronend)
+            </p>
+            <p class="paragraph">
+                I have choosed the library as the subject area because I want in a future
+                create similar project but with more functionality.
+            </p>
+            <p class="paragraph">
+                In this version of site you can look through list of Books as User. But
+                to manipulate with data you must login as admin, also you can login as
+                moderator, but in this role you can only change existed data. In admin
+                role you can create new entities, delete them and edit as well.
+            </p>
+        </div>
+    </div>
 </div>
+
+<div class="w-layout-blockcontainer container w-container">
+    <h2 class="h2">
+        Minimum server requirements
+    </h2>
+    <p class="paragraph">
+        The developed API must contain at least the following endpoints:
+    </p>
+    <ul role="list">
+        <li>
+            <p class="paragraph">
+                Getting a list of users
+            </p>
+        </li>
+        <li>
+            <p class="paragraph">
+                Getting a list of products of a user&#x27;s order by his Id
+            </p>
+        </li>
+        <li>
+            <p class="paragraph">
+                Adding products for sale
+            </p>
+        </li>
+        <li>
+            <p class="paragraph">
+                Removing products being sold
+            </p>
+        </li>
+        <li>
+            <p class="paragraph">
+                Editing products for sale
+            </p>
+        </li>
+    </ul>
+</div>
+
+<div class="w-layout-blockcontainer container w-container">
+    <h2 class="h2">
+        About Login
+    </h2>
+    <p class="paragraph">
+        To get full access to all pages and functionality, log in as an
+        <strong>
+            administrator
+        </strong>
+        :
+        <br>
+        <em>
+            Login: admin
+            <br>
+            Password: ForAdm1n;
+        </em>
+    </p>
+    <p class="paragraph">
+        You can also log in as a
+        <strong>
+            moderator
+        </strong>
+        , but you can only edit some data. For example, book descriptions:
+        <br>
+        <em>
+            Login: moderator
+            <br>
+            Password: ForM0derator
+        </em>
+    </p>
+</div>
+
+<div class="w-layout-blockcontainer container w-container">
+    <h2 class="h2">
+        List of all available links
+    </h2>
+    <ul role="list">
+        <li>
+            <a class="paragraph" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li>
+            <a class="paragraph" asp-controller="Books" asp-action="Index" asp-route-pageNumber="1">Books</a>
+        </li>
+        <li>
+            <a class="paragraph" asp-controller="Authors" asp-action="Index">Authors</a>
+        </li>
+        <li>
+            <a class="paragraph" asp-controller="Genres" asp-action="Index">Genres</a>
+        </li>
+        <li>
+            <a class="paragraph" asp-controller="Readers" asp-action="Index">Readers</a>
+        </li>
+        <li>
+            <a class="paragraph" asp-controller="Authorize" asp-action="Logout">Logout</a>
+        </li>
+        <li>
+            <a class="paragraph" asp-controller="Authorize" asp-action="Login">Login as admin</a>
+        </li>
+    </ul>
+</div>
+

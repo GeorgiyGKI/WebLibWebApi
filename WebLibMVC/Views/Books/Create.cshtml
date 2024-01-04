@@ -5,12 +5,13 @@
 }
 
 
-<div class="row text-center justify-content-center mt-5">
-    @if (User.IsInRole("Administrator"))
-    {
-        <h2>Create book</h2>
-        <div class="col-md-4 text-start">
-            <form asp-action="Create" enctype="multipart/form-data">
+
+@if (User.IsInRole("Administrator"))
+{
+    <div class="row justify-content-center heading">
+        <div class="col-4">
+            <h2>Create book</h2>
+            <form asp-action="Create" class="text-start" enctype="multipart/form-data">
                 <br />
                 <label asp-for="Title" class="control-label"></label>
                 <span asp-validation-for="Title" class="text-danger"></span>
@@ -31,21 +32,23 @@
                 <input asp-for="Quantity" placeholder="enter a quantity (from 0 to 99)" class="form-control mb-3" />
 
                 <p class=" text-black-50">if you don't select an image, the default image will be set</p>
-                <p class=" text-black-50">2 mb - is the maximum available file size </p>
+                <p class=" text-black-50">2 mb - is the maximum available image size </p>
                 <label asp-for="Image" class="control-label"></label>
                 <input asp-for="Image" type="file" class="form-control" />
                 <br />
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-3">Send</button>
-                    <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
+                <div class="text-center mb-5">
+                    <button type="submit" class="createbtn w-button text-black">Send</button>
+                    <a class="closebtn w-button text-white btn-secondary" asp-action="Index" asp-route-pageNumber="1">Cancel</a>
                 </div>
             </form>
         </div>
-    }
-    else
-    {
-        <h1>You don't have accsess to this page</h1>
-    }
-</div>
+    </div>
+
+}
+else
+{
+    <h1 class="heading">You don't have accsess to this page</h1>
+}
+
 

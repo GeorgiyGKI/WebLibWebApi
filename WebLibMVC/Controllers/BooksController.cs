@@ -19,6 +19,8 @@ namespace WebLibMVC.Controllers
             var authors = await _service.AuthorService.GetAllAuthorsAsync();
             var genres = await _service.GenreService.GetAllGenresAsync();
 
+
+
             bookViewModel.Authors.AddRange(authors.Select(author => new SelectListItem
             {
                 Value = author.Id.ToString(),
@@ -33,10 +35,13 @@ namespace WebLibMVC.Controllers
 
             return View(bookViewModel);
         }
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index(int pageNumber, int? maxYear, int? minYear, string? searchTerm, string? orderBy)
         {
-            var books = await _service.BookService.GetAllBooksAsync();
-           
+            var (books, metadata) = await _service.BookService.GetBooksForPageAsync(pageNumber, maxYear, minYear, searchTerm, orderBy);
+            ViewBag.TotalPages = metadata.TotalPages;
+
+
             foreach (var book in books)
             {
                 var author = await _service.AuthorService.GetAuthorAsync(book.AuthorId);
@@ -44,6 +49,7 @@ namespace WebLibMVC.Controllers
                 book.AuthorName = $"{author.FirstName} {author.LastName}";
                 book.GenreName = genre.Name;
             }
+
             return View(books);
         }
 
@@ -91,7 +97,7 @@ namespace WebLibMVC.Controllers
                 await _service.BookService.UpdateBookAsync(book, id);
             else
                 return await Edit(id);
-            
+
 
             return RedirectToAction("Index");
         }
@@ -120,7 +126,7 @@ namespace WebLibMVC.Controllers
 
         public async Task<IActionResult> GetImage(int id)
         {
-            var menuItem = await _service.BookService.GetBookAsync(id); ///!!!!!!!!
+            var menuItem = await _service.BookService.GetBookAsync(id);
 
             byte[] imageData;
             if (menuItem.Image != null)
@@ -131,9 +137,7 @@ namespace WebLibMVC.Controllers
                     imageData = memoryStream.ToArray();
                 }
 
-                if (menuItem.Image != null)
-                    return File(imageData, $"image/{menuItem.Image.FileName}");
-
+                return File(imageData, $"image/{menuItem.Image.FileName}");
             }
 
             return NotFound();

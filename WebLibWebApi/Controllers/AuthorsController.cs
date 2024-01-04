@@ -49,7 +49,7 @@ namespace WebLibWebApi.Controllers
 
         [HttpPut("{id:int}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> UpdateAuthor(int id, [FromBody] AuthorDto author)
         {
             await _service.AuthorService.UpdateAuthorAsync(id, author, trackChanges: true);

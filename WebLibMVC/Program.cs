@@ -8,8 +8,6 @@ using WebLibMVC.Handler;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 // Add services to the container.
 builder.Services.ConfigureServiceManager();
 builder.Services.AddControllersWithViews();
@@ -24,7 +22,6 @@ builder.Services.AddAuthentication();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
-    options.Cookie.HttpOnly = true; // Защита от скриптов
     options.Cookie.IsEssential = true;
 });
 
@@ -55,8 +52,6 @@ app.UseCookiePolicy(new CookiePolicyOptions
     Secure = CookieSecurePolicy.Always,
 });
 
-
-
 app.Use(async (context, next) =>
 {
     var token = context.Request.Cookies[".AspNetCore.Application.Id"];
@@ -66,8 +61,6 @@ app.Use(async (context, next) =>
     }
     await next();
 });
-
-
 
 app.UseAuthentication();
 app.UseAuthorization();

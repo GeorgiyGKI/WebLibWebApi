@@ -4,11 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<div class="row text-center justify-content-center mt-5">
-    <h2>Login</h2>
-    <div class="col-md-5 text-start">
-        <form asp-action="Login">
+<div class="row justify-content-center heading">
+    <div class="col-4">
+        <h2>Login</h2>
+        <form asp-action="Login" class="text-start">
             <br />
             <label asp-for="Name" class="control-label"></label>
             <span asp-validation-for="Name" class="text-danger"></span>
@@ -23,9 +22,13 @@
             }
             <br />
             <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3">Login</button>
-                <a class="btn btn-secondary mt-3" asp-controller="Home" asp-action="Index">Cancel</a>
+                <button type="submit" class="createbtn w-button text-black">Login</button>
+                <a class="closebtn w-button text-white btn-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
             </div>
+
+            
         </form>
     </div>
 </div>
+
+

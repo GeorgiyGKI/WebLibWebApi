@@ -1,4 +1,6 @@
-﻿namespace ApiTests.Controllers;
+﻿using Shared.RequestFeatures;
+
+namespace ApiTests.Controllers;
 
 public class BooksControllerTests
 {
@@ -26,10 +28,11 @@ public class BooksControllerTests
     {
         // Arrange
         var feedbacksMock = _fixture.Create<IEnumerable<BookDto>>();
+        var parametersMock = _fixture.Create<BookParameters>();
         _serviceMock.Setup(x => x.BookService.GetAllBooksAsync(false)).ReturnsAsync(feedbacksMock);
 
         // Act
-        var result = await _controller.GetBooks().ConfigureAwait(false);
+        var result = await _controller.GetBooks(parametersMock).ConfigureAwait(false);
 
         // Assert
         result.Should().NotBeNull();
@@ -40,10 +43,11 @@ public class BooksControllerTests
     {
         // Arrange
         List<BookDto> response = null;
+        var parametersMock = _fixture.Create<BookParameters>();
         _serviceMock.Setup(x => x.BookService.GetAllBooksAsync(false)).ReturnsAsync(response);
 
         // Act
-        var result = await _controller.GetBooks().ConfigureAwait(false);
+        var result = await _controller.GetBooks(parametersMock).ConfigureAwait(false);
 
         // Assert
         result.Should().BeAssignableTo<NotFoundResult>();
@@ -98,11 +102,11 @@ public class BooksControllerTests
         _serviceMock.Verify(x => x.BookService.CreateBookAsync(request), Times.Once());
     }
     [Fact]
-    public async Task CreateBook_ShouldReturnBadRequest_WhenInvalidRequest()
+    public async Task CreateBook_ShouldReturnUnprocessableEntityObjectResult_WhenInvalidRequest()
     {
         // Arrange
-        var request = _fixture.Create<BookDto>();
-        _controller.ModelState.AddModelError("Subject", "The Subject field is required.");
+        BookDto request = null;
+        _serviceMock.Setup(x => x.BookService.CreateBookAsync(request));
         var response = _fixture.Create<BookDto>();
 
         // Act

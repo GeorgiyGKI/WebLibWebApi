@@ -53,7 +53,7 @@ namespace WebLibWebApi.Controllers
 
         [HttpPut("{id:int}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Moderator")]
         public async Task<IActionResult> UpdateGenre(int id, [FromBody] GenreDto genre)
         {
             await _service.GenreService.UpdateGenreAsync(id, genre, trackChanges: true);

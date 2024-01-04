@@ -4,56 +4,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row justify-content-center mt-5">
-    <div class="text-center">
-        <div class="col">
-            <h2>Transactions</h2>
-            <a class="btn btn-success" asp-action="Create" asp-route-readerId="@ViewBag.ReaderId">Create</a>
-        </div>
+@if (User.IsInRole("Administrator"))
+{
+    <div class="div-block-18">
+        <h2 class="heading-2">
+            Transactions
+        </h2>
+        <a class="createbtn w-button text-black" asp-action="Create" asp-route-readerId="@ViewBag.ReaderId">Create new</a>
     </div>
-    <div class="col-md-12">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><h5>Reader</h5></th>
-                    <th><h5>Book</h5></th>
-                    <th><h5>Checkout date</h5></th>
-                    <th><h5>Return date</h5></th>
-                    <th><h5>Status</h5></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <br />
-                @foreach (var Transaction in Model)
-                {
-                    <tr>
-                        <td>@Transaction.ReaderName</td>
-                        <td>@Transaction.BookName</td>
-                        <td>@Transaction.CheckoutDate.ToLongDateString()</td>
-                        <td>
-                            @if (Transaction.ReturnDate is not null)
-                            {
-                                @Transaction.ReturnDate.Value.ToLongDateString()
-                                ;
-                            }
-                        </td>
-                        <td>@Transaction.TransactionStatusName</td>
-                        <td>
-                            <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline"
-                               asp-route-readerId="@Transaction.ReaderId" asp-route-id="@Transaction.Id">Edit</a>
-                            <a asp-action="Delete" class="btn-sm btn-danger no-underline"
-                               asp-route-readerId="@Transaction.ReaderId" asp-route-id="@Transaction.Id">Delete</a>
-                            @if (Transaction.TransactionStatusId == 1)
-                            {
+    <div id="w-node-b8974190-80ed-9567-1ee2-29d752334a94-4d8efa88" class="w-layout-layout quick-stack-2 wf-layout-layout">
+        @foreach (var transaction in Model)
+        {
+            <div id="w-node-cfaa6eca-eb95-75fe-cd47-b3e5b3ee8ccd-4d8efa88" class="w-layout-cell cell">
+                <p class="themainlable">
+                    @transaction.BookName
+                </p>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Return date
+                    </p>
+                    <p class="secondlabel">
+                        @transaction.ReturnDate
+                    </p>
+                </div>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Checkout date
+                    </p>
+                    <p class="secondlabel">
+                        @transaction.CheckoutDate
+                    </p>
+                </div>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Transaction status
+                    </p>
+                    <p class="secondlabel">
+                        @transaction.TransactionStatusName
+                    </p>
+                </div>
 
-                                <a asp-action="Close" class="btn-sm btn-warning no-underline"
-                                   asp-route-readerId="@Transaction.ReaderId" asp-route-id="@Transaction.Id">Close</a>
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                <div class="div-block-19">
+                    <a class="editbtn w-button text-white" asp-action="Edit"
+                       asp-route-readerId="@transaction.ReaderId" asp-route-id="@transaction.Id">Edit</a>
+                    <a class="deletebtn w-button text-white" asp-action="Delete"
+                       asp-route-readerId="@transaction.ReaderId" asp-route-id="@transaction.Id">Delete</a>
+                    @if (transaction.TransactionStatusId == 1)
+                    {
+
+                        <a asp-action="Close" class="closebtn w-button text-white btn-secondary"
+                           asp-route-readerId="@transaction.ReaderId" asp-route-id="@transaction.Id">Close</a>
+                    }
+                </div>
+            </div>
+        }
     </div>
-</div>
+}
+else
+{
+    <h1 class="heading">You don't have accsess to this page</h1>
+}

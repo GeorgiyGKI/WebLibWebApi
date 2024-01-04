@@ -4,35 +4,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row justify-content-center mt-5">
-    <div class="text-center">
-        <div class="col">
-            <h2>Transaction statuses</h2>
-            <a class="btn btn-success" asp-action="Create">Create</a>
-        </div>
+@if (User.IsInRole("Administrator"))
+{
+    <div class="div-block-18">
+        <h2 class="heading-2">
+            Transaction statuses
+        </h2>
+        <a class="createbtn w-button text-black" asp-action="Create">Create new</a>
     </div>
-    <div class="col-md-8">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th><h5>Status</h5></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <br />
-                @foreach (var TransactionStatuses in Model)
-                {
-                    <tr>
-                        <td>@TransactionStatuses.Name</td>
-                        <td>
-                            <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline" asp-route-id="@TransactionStatuses.Id">Edit</a>
-                            <a asp-action="Delete" class="btn-sm btn-danger no-underline" asp-route-id="@TransactionStatuses.Id">Delete</a>
+    <div id="w-node-b8974190-80ed-9567-1ee2-29d752334a94-4d8efa88" class="w-layout-layout quick-stack-2 wf-layout-layout">
+        @foreach (var transactionStatus in Model)
+        {
+            <div id="w-node-cfaa6eca-eb95-75fe-cd47-b3e5b3ee8ccd-4d8efa88" class="w-layout-cell cell">
+                <p class="themainlable">
+                    @transactionStatus.Name
+                </p>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Genre name
+                    </p>
+                    <p class="secondlabel">
+                        @transactionStatus.Name
+                    </p>
+                </div>
 
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                <div class="div-block-19">
+                    <a class="editbtn w-button text-white" asp-action="Edit" asp-route-id="@transactionStatus.Id">Edit</a>
+                    <a class="deletebtn w-button text-white" asp-action="Delete" asp-route-id="@transactionStatus.Id">Delete</a>
+                </div>
+            </div>
+        }
     </div>
-</div>
+}
+else
+{
+    <h1 class="heading">You don't have accsess to this page</h1>
+}

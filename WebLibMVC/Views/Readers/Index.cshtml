@@ -4,6 +4,82 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (!User.Identity.IsAuthenticated)
+{
+    <h1 class="heading">You do not have access to view the data on this page</h1>
+}
+else
+{
+    <div class="div-block-18">
+        <h2 class="heading-2">
+            Readers
+        </h2>
+        @if (User.IsInRole("Administrator"))
+        {
+            <a class="createbtn w-button text-black" asp-action="Create">Create new</a>
+        }
+    </div>
+    <div id="w-node-b8974190-80ed-9567-1ee2-29d752334a94-4d8efa88" class="w-layout-layout quick-stack-2 wf-layout-layout">
+        @foreach (var reader in Model)
+        {
+            <div id="w-node-cfaa6eca-eb95-75fe-cd47-b3e5b3ee8ccd-4d8efa88" class="w-layout-cell cell">
+                <p class="themainlable">
+                    @reader.FirstName  @reader.LastName
+                </p>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        First name
+                    </p>
+                    <p class="secondlabel">
+                        @reader.FirstName
+                    </p>
+                </div>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Last name
+                    </p>
+                    <p class="secondlabel">
+                        @reader.LastName
+                    </p>
+                </div>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Address
+                    </p>
+                    <p class="secondlabel">
+                        @reader.Address
+                    </p>
+                </div>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Phone number
+                    </p>
+                    <p class="secondlabel">
+                        @reader.PhoneNumber
+                    </p>
+                </div>
+                <div class="div-block-20">
+                    <p class="mainlable">
+                        Registration date
+                    </p>
+                    <p class="secondlabel">
+                        @reader.RegistrationDate.ToShortDateString()
+                    </p>
+                </div>
+
+                @if (User.IsInRole("Administrator"))
+                {
+                    <div class="div-block-19">
+                        <a class="editbtn w-button text-white" asp-action="Edit" asp-route-id="@reader.Id">Edit</a>
+                    <a class="deletebtn w-button text-white" asp-action="Delete" asp-route-id="@reader.Id">Delete</a>
+                        <a asp-action="Index" asp-controller="Transactions" class="closebtn w-button text-white" asp-route-readerId="@reader.Id">transactions</a>
+                </div>
+                }
+            </div>
+        }
+    </div>
+}
+@* 
 <div class="row justify-content-center mt-5">
     <div class="text-center">
         <div class="col">
@@ -36,12 +112,14 @@
                         <td>
                             <a asp-action="Edit" class="btn-sm btn-primary m-2 no-underline" asp-route-id="@reader.Id">Edit</a>
                             <a asp-action="Delete" class="btn-sm btn-danger no-underline" asp-route-id="@reader.Id">Delete</a>
-                            <a asp-action="Index" asp-controller="Transactions" class="btn-sm btn-warning no-underline" asp-route-readerId="@reader.Id">transactions</a>
-
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <a asp-action="Index" asp-controller="Transactions" class="btn-sm btn-warning no-underline" asp-route-readerId="@reader.Id">transactions</a>
+                            }
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</div>
+</div> *@

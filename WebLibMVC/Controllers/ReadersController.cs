@@ -7,7 +7,8 @@ namespace WebLibMVC.Controllers
     public class ReadersController : Controller
     {
         private readonly IServiceManager _service;
-        public ReadersController(IServiceManager serviceManager) => _service = serviceManager;
+        public ReadersController(IServiceManager serviceManager) =>
+            _service = serviceManager ?? throw new ArgumentNullException(nameof(serviceManager));
 
         public IActionResult Create()
         {

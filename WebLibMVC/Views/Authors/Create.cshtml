@@ -5,40 +5,46 @@
 }
 
 
-<div class="row text-center justify-content-center mt-5">
-    @if (User.IsInRole("Administrator"))
-    {
-        <h2>Create author</h2>
-        <div class="col-md-3 text-start">
-            <form asp-action="Create">
-                <br />
-                <label asp-for="FirstName" class="control-label"></label>
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-                <input asp-for="FirstName" placeholder="Enter first name (max 30 characters)" class="form-control mb-3" />
 
-                <label asp-for="LastName" class="control-label"></label>
-                <span asp-validation-for="LastName" class="text-danger"></span>
-                <input asp-for="LastName" placeholder="Enter last name (max 30 characters)" class="form-control mb-3" />
+@if (User.IsInRole("Administrator"))
+{
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            <h2 class="heading">Create author</h2>
+            <div class="heading text-start">
+                <form asp-action="Create">
+                    <br />
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                    <input asp-for="FirstName" placeholder="Enter first name (max 30 characters)" class="form-control mb-3" />
 
-                <label asp-for="BirthDate" class="control-label"></label>
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-                <input asp-for="BirthDate" placeholder="choose date" class="form-control mb-3" />
+                    <label asp-for="LastName" class="control-label"></label>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                    <input asp-for="LastName" placeholder="Enter last name (max 30 characters)" class="form-control mb-3" />
 
-                <label asp-for="Country" class="control-label"></label>
-                <span asp-validation-for="Country" class="text-danger"></span>
-                <input asp-for="Country" placeholder="Enter country (max 30 characters)" class="form-control mb-3" />
-                <br />
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-3">Send</button>
-                    <a class="btn btn-secondary mt-3" asp-action="Index">Cancel</a>
-                </div>
+                    <label asp-for="BirthDate" class="control-label"></label>
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                    <input asp-for="BirthDate" placeholder="choose date" class="form-control mb-3" />
 
-            </form>
+                    <label asp-for="Country" class="control-label"></label>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                    <input asp-for="Country" placeholder="Enter country (max 30 characters)" class="form-control mb-3" />
+                    <br />
+                    <div class="text-center">
+                        <button type="submit" class="createbtn w-button text-black">Send</button>
+                        <a class="closebtn w-button text-white btn-secondary" asp-action="Index">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
         </div>
-    }
-    else
-    {
-        <h1>You don't have accsess to this page</h1>
-    }
-</div>
+       
+    </div>
+       
+}
+else
+{
+    <h1>You don't have accsess to this page</h1>
+}
+
 

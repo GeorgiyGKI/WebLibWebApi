@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Новая папка\" />
+    <Folder Include="wwwroot\658ec4b6b1b7ce4b4d8efa3b\css\" />
   </ItemGroup>
 
 </Project>

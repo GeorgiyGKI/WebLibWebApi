@@ -8,7 +8,8 @@ namespace WebLibMVC.Controllers
     public class TransactionsController : Controller
     {
         private readonly IServiceManager _service;
-        public TransactionsController(IServiceManager serviceManager) => _service = serviceManager;
+        public TransactionsController(IServiceManager serviceManager) => 
+            _service = serviceManager ?? throw new ArgumentNullException(nameof(serviceManager));
 
         public async Task<IActionResult> Create(int readerId)
         {
@@ -23,7 +24,7 @@ namespace WebLibMVC.Controllers
 
             ViewBag.ReaderId = readerId;
 
-           
+
             return View(transactionViewModel);
         }
 
@@ -46,7 +47,7 @@ namespace WebLibMVC.Controllers
         public async Task<IActionResult> Create(int readerId, TransactionViewModel transaction)
         {
             var reader = _service.ReaderService.GetReaderAsync(readerId);
-            
+
             if (ModelState.IsValid && reader is not null)
             {
                 transaction.ReaderId = readerId;

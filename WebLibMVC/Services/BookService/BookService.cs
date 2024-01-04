@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
 using Shared.DataTransferObject;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using WebLibMVC.ViewModels;
@@ -30,9 +32,9 @@ namespace ServiceMVC.BookService
             var client = GetClient();
 
             if (bookViewModel.Image == null)
-                LoadDefaultImage(bookViewModel);
+                await LoadDefaultImageAsync(bookViewModel);
             else
-                LoadUserImage(bookViewModel);
+                await LoadUserImageAsync(bookViewModel);
 
             var bookDto = _mapper.Map<BookDto>(bookViewModel);
             var response = await client.PostAsJsonAsync("api/Books/", bookDto);
@@ -55,14 +57,33 @@ namespace ServiceMVC.BookService
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<BookViewModel>> GetAllBooksAsync()
+        public async Task<(IEnumerable<BookViewModel>, MetaData metaData)> GetBooksForPageAsync(int pageNumber, 
+                                                                                                int? maxYear,
+                                                                                                int? minYear,
+                                                                                                string? searchTerm,
+                                                                                                string? orderBy)
         {
             var client = GetClient();
-            var response = await client.GetAsync("/api/Books");
+            var urlBuilder = new StringBuilder($"/api/Books?&pageNumber={pageNumber}");
+
+            if (maxYear != null)
+                urlBuilder.Append($"&maxYear={maxYear}");
+            if (minYear != null)
+                urlBuilder.Append($"&minYear={minYear}");
+            if (!string.IsNullOrEmpty(searchTerm))
+                urlBuilder.Append($"&searchTerm={searchTerm}");
+            if (!string.IsNullOrEmpty(orderBy))
+                urlBuilder.Append($"&orderBy={orderBy}");
+            
+               
+
+
+            var response = await client.GetAsync(urlBuilder.ToString());
             var booksDto = JsonConvert.DeserializeObject<IEnumerable<BookDto>>(await response.Content.ReadAsStringAsync());
+            var metaData = System.Text.Json.JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First());
             var booksView = _mapper.Map<IEnumerable<BookViewModel>>(booksDto);
 
-            return booksView;
+            return (booksView, metaData);
         }
 
         public async Task<BookViewModel> GetBookAsync(int id)
@@ -81,9 +102,9 @@ namespace ServiceMVC.BookService
             var client = GetClient();
 
             if (bookViewModel.Image == null)
-                LoadDefaultImage(bookViewModel);
+                await LoadDefaultImageAsync(bookViewModel);
             else
-                LoadUserImage(bookViewModel);
+                await LoadUserImageAsync(bookViewModel);
 
             var response = await client.PutAsJsonAsync($"api/Books/{id}", bookViewModel);
 
@@ -116,7 +137,7 @@ namespace ServiceMVC.BookService
             }
         }
 
-        private static async Task LoadUserImage(BookViewModel bookViewModel)
+        private static async Task LoadUserImageAsync(BookViewModel bookViewModel)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -125,18 +146,24 @@ namespace ServiceMVC.BookService
             }
         }
 
-        private static async Task LoadDefaultImage(BookViewModel bookViewModel)
+        private static async Task LoadDefaultImageAsync(BookViewModel bookViewModel)
         {
             string defaultImagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "default-book-image.jpg");
+            using var fileStream = new FileStream(defaultImagePath, FileMode.Open);
+            using var memoryStream = new MemoryStream();
 
-            using (var fileStream = new FileStream(defaultImagePath, FileMode.Open))
-            {
-                using (var memoryStream = new MemoryStream())
-                {
-                    await fileStream.CopyToAsync(memoryStream);
-                    bookViewModel.ImageData = memoryStream.ToArray();
-                }
-            }
+            await fileStream.CopyToAsync(memoryStream);
+            bookViewModel.ImageData = memoryStream.ToArray();
+        }
+
+        public async Task<IEnumerable<BookViewModel>> GetAllBooksAsync()
+        {
+            var client = GetClient();
+            var response = await client.GetAsync("/api/Books/ListOfBooks");
+            var booksDto = JsonConvert.DeserializeObject<IEnumerable<BookDto>>(await response.Content.ReadAsStringAsync());
+            var booksView = _mapper.Map<IEnumerable<BookViewModel>>(booksDto);
+
+            return booksView;
         }
     }
 

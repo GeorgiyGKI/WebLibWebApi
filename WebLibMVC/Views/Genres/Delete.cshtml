@@ -5,25 +5,26 @@
 }
 
 
-<div class="row text-center mt-5 justify-content-center">
-    @if (User.IsInRole("Administrator"))
-    {
-        <h1 class="text-danger">Delete genre</h1>
+@if (User.IsInRole("Administrator"))
+{
+    <div class="row justify-content-center heading">
+        <div class="col-4">
+            <h1>Delete genre</h1>
 
-        <div class="col-md-6 mt-3">
             <form method="post">
                 <h2>Are you sure you want to delete this genre?</h2>
                 <br />
                 <h3 class="text">@Model.Name</h3>
                 <br />
-                <button type="submit" class="btn btn-danger mt-3">Delete</button>
-                <a asp-action="Index" class="btn btn-secondary mt-3">Cancel</a>
+                <button type="submit" class="createbtn w-button text-black">Delete</button>
+                <a class="closebtn w-button text-white btn-secondary" asp-action="Index">Cancel</a>
             </form>
         </div>
-    }
-    else
-    {
-        <h1>You don't have accsess to this page</h1>
-    }
-   
-</div>
+    </div>
+    
+}
+else
+{
+    <h1 class="heading">You don't have accsess to this page</h1>
+}
+

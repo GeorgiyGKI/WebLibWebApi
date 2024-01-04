@@ -569,7 +569,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "John",
                             LastName = "Doe",
                             PhoneNumber = "555-1234",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8027)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2756)
                         },
                         new
                         {
@@ -578,7 +578,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Jane",
                             LastName = "Smith",
                             PhoneNumber = "555-5678",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8040)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2767)
                         },
                         new
                         {
@@ -587,7 +587,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Robert",
                             LastName = "Johnson",
                             PhoneNumber = "555-9101",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8042)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2768)
                         },
                         new
                         {
@@ -596,7 +596,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Emily",
                             LastName = "Williams",
                             PhoneNumber = "555-1212",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8043)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2769)
                         },
                         new
                         {
@@ -605,7 +605,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Michael",
                             LastName = "Brown",
                             PhoneNumber = "555-1414",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8044)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2770)
                         },
                         new
                         {
@@ -614,7 +614,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Olivia",
                             LastName = "Jones",
                             PhoneNumber = "555-1616",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8046)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2772)
                         },
                         new
                         {
@@ -623,7 +623,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "William",
                             LastName = "Davis",
                             PhoneNumber = "555-1818",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8048)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2774)
                         },
                         new
                         {
@@ -632,7 +632,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Sophia",
                             LastName = "Miller",
                             PhoneNumber = "555-2020",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8049)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2775)
                         },
                         new
                         {
@@ -641,7 +641,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "James",
                             LastName = "Wilson",
                             PhoneNumber = "555-2222",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8051)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2776)
                         },
                         new
                         {
@@ -650,7 +650,7 @@ namespace WebLibWebApi.Migrations
                             FirstName = "Emma",
                             LastName = "Moore",
                             PhoneNumber = "555-2424",
-                            RegistrationDate = new DateTime(2023, 11, 18, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8053)
+                            RegistrationDate = new DateTime(2023, 12, 31, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2777)
                         });
                 });
 
@@ -692,7 +692,7 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 1,
                             BookId = 1,
-                            CheckoutDate = new DateTime(2023, 11, 13, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8243),
+                            CheckoutDate = new DateTime(2023, 12, 26, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2854),
                             ReaderId = 1,
                             TransactionStatusId = 1
                         },
@@ -700,16 +700,16 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 2,
                             BookId = 3,
-                            CheckoutDate = new DateTime(2023, 11, 8, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8252),
+                            CheckoutDate = new DateTime(2023, 12, 21, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2859),
                             ReaderId = 2,
-                            ReturnDate = new DateTime(2023, 11, 13, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8253),
+                            ReturnDate = new DateTime(2023, 12, 26, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2859),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 3,
                             BookId = 2,
-                            CheckoutDate = new DateTime(2023, 11, 10, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8258),
+                            CheckoutDate = new DateTime(2023, 12, 23, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2864),
                             ReaderId = 3,
                             TransactionStatusId = 1
                         },
@@ -717,7 +717,7 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 4,
                             BookId = 5,
-                            CheckoutDate = new DateTime(2023, 11, 3, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8259),
+                            CheckoutDate = new DateTime(2023, 12, 16, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2865),
                             ReaderId = 4,
                             TransactionStatusId = 3
                         },
@@ -725,16 +725,16 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 5,
                             BookId = 4,
-                            CheckoutDate = new DateTime(2023, 11, 11, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8260),
+                            CheckoutDate = new DateTime(2023, 12, 24, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2866),
                             ReaderId = 5,
-                            ReturnDate = new DateTime(2023, 11, 17, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8261),
+                            ReturnDate = new DateTime(2023, 12, 30, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2867),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 6,
                             BookId = 6,
-                            CheckoutDate = new DateTime(2023, 11, 6, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8263),
+                            CheckoutDate = new DateTime(2023, 12, 19, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2868),
                             ReaderId = 6,
                             TransactionStatusId = 1
                         },
@@ -742,7 +742,7 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 7,
                             BookId = 8,
-                            CheckoutDate = new DateTime(2023, 11, 9, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8264),
+                            CheckoutDate = new DateTime(2023, 12, 22, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2870),
                             ReaderId = 7,
                             TransactionStatusId = 3
                         },
@@ -750,16 +750,16 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 8,
                             BookId = 7,
-                            CheckoutDate = new DateTime(2023, 11, 4, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8265),
+                            CheckoutDate = new DateTime(2023, 12, 17, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2871),
                             ReaderId = 8,
-                            ReturnDate = new DateTime(2023, 11, 10, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8266),
+                            ReturnDate = new DateTime(2023, 12, 23, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2871),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 9,
                             BookId = 10,
-                            CheckoutDate = new DateTime(2023, 11, 7, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8268),
+                            CheckoutDate = new DateTime(2023, 12, 20, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2873),
                             ReaderId = 9,
                             TransactionStatusId = 1
                         },
@@ -767,7 +767,7 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 10,
                             BookId = 9,
-                            CheckoutDate = new DateTime(2023, 11, 5, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8269),
+                            CheckoutDate = new DateTime(2023, 12, 18, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2874),
                             ReaderId = 10,
                             TransactionStatusId = 3
                         },
@@ -775,7 +775,7 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 11,
                             BookId = 7,
-                            CheckoutDate = new DateTime(2023, 11, 12, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8270),
+                            CheckoutDate = new DateTime(2023, 12, 25, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2875),
                             ReaderId = 1,
                             TransactionStatusId = 1
                         },
@@ -783,7 +783,7 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 12,
                             BookId = 9,
-                            CheckoutDate = new DateTime(2023, 11, 9, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8272),
+                            CheckoutDate = new DateTime(2023, 12, 22, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2876),
                             ReaderId = 2,
                             TransactionStatusId = 3
                         },
@@ -791,72 +791,72 @@ namespace WebLibWebApi.Migrations
                         {
                             Id = 13,
                             BookId = 8,
-                            CheckoutDate = new DateTime(2023, 11, 11, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8273),
+                            CheckoutDate = new DateTime(2023, 12, 24, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2877),
                             ReaderId = 3,
-                            ReturnDate = new DateTime(2023, 11, 15, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8274),
+                            ReturnDate = new DateTime(2023, 12, 28, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2877),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 14,
                             BookId = 10,
-                            CheckoutDate = new DateTime(2023, 11, 7, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8275),
+                            CheckoutDate = new DateTime(2023, 12, 20, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2878),
                             ReaderId = 4,
-                            ReturnDate = new DateTime(2023, 11, 12, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8276),
+                            ReturnDate = new DateTime(2023, 12, 25, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2879),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 15,
                             BookId = 6,
-                            CheckoutDate = new DateTime(2023, 11, 10, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8277),
+                            CheckoutDate = new DateTime(2023, 12, 23, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2882),
                             ReaderId = 5,
-                            ReturnDate = new DateTime(2023, 11, 17, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8278),
+                            ReturnDate = new DateTime(2023, 12, 30, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2882),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 16,
                             BookId = 4,
-                            CheckoutDate = new DateTime(2023, 11, 5, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8280),
+                            CheckoutDate = new DateTime(2023, 12, 18, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2884),
                             ReaderId = 6,
-                            ReturnDate = new DateTime(2023, 11, 11, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8280),
+                            ReturnDate = new DateTime(2023, 12, 24, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2884),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 17,
                             BookId = 5,
-                            CheckoutDate = new DateTime(2023, 11, 8, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8282),
+                            CheckoutDate = new DateTime(2023, 12, 21, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2885),
                             ReaderId = 7,
-                            ReturnDate = new DateTime(2023, 11, 14, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8283),
+                            ReturnDate = new DateTime(2023, 12, 27, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2886),
                             TransactionStatusId = 3
                         },
                         new
                         {
                             Id = 18,
                             BookId = 3,
-                            CheckoutDate = new DateTime(2023, 11, 6, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8284),
+                            CheckoutDate = new DateTime(2023, 12, 19, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2887),
                             ReaderId = 8,
-                            ReturnDate = new DateTime(2023, 11, 12, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8285),
+                            ReturnDate = new DateTime(2023, 12, 25, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2888),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 19,
                             BookId = 2,
-                            CheckoutDate = new DateTime(2023, 11, 11, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8286),
+                            CheckoutDate = new DateTime(2023, 12, 24, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2889),
                             ReaderId = 9,
-                            ReturnDate = new DateTime(2023, 11, 16, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8287),
+                            ReturnDate = new DateTime(2023, 12, 29, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2890),
                             TransactionStatusId = 2
                         },
                         new
                         {
                             Id = 20,
                             BookId = 1,
-                            CheckoutDate = new DateTime(2023, 11, 9, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8289),
+                            CheckoutDate = new DateTime(2023, 12, 22, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2891),
                             ReaderId = 10,
-                            ReturnDate = new DateTime(2023, 11, 15, 11, 36, 42, 714, DateTimeKind.Local).AddTicks(8290),
+                            ReturnDate = new DateTime(2023, 12, 28, 11, 11, 6, 474, DateTimeKind.Local).AddTicks(2891),
                             TransactionStatusId = 2
                         });
                 });
@@ -925,15 +925,15 @@ namespace WebLibWebApi.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7b0071dc-73bd-42aa-aef0-f1edd51aa49e",
-                            ConcurrencyStamp = "71a531ff-880b-418f-89ca-c1ffb4306c04",
+                            Id = "e089cb67-1dd1-4c12-bf00-08af4a4b12e2",
+                            ConcurrencyStamp = "df9f28f8-e449-4522-970e-21d1f425ed82",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "d8c67ead-9505-4806-a937-e04a46caef78",
-                            ConcurrencyStamp = "3be17055-e607-4290-896d-43c6facd959f",
+                            Id = "6f3fa859-baeb-402b-8006-7c4e2f047f1b",
+                            ConcurrencyStamp = "a8dfc2ca-c3e2-48de-938e-605b00200f6d",
                             Name = "Moderator",
                             NormalizedName = "MODERATOR"
                         });

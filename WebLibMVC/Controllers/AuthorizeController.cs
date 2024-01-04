@@ -11,7 +11,8 @@ namespace WebLibMVC.Controllers
     public class AuthorizeController : Controller
     {
         private readonly IServiceManager _service;
-        public AuthorizeController(IServiceManager serviceManager) => _service = serviceManager;
+        public AuthorizeController(IServiceManager serviceManager) =>
+            _service = serviceManager ?? throw new ArgumentNullException(nameof(serviceManager));
 
         public IActionResult Login()
         {

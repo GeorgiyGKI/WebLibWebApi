@@ -1,4 +1,5 @@
 ﻿using Shared.DataTransferObject;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Service.BookService
     public interface IBookService
     {
         Task<IEnumerable<BookDto>> GetAllBooksAsync(bool trackChanges);
+        Task<(IEnumerable<BookDto> books, MetaData metaData)> GetBooksForPageAsync(BookParameters bookParameters,bool trackChanges);
         Task<BookDto> GetBookAsync(int id, bool trackChanges);
         Task<BookDto> CreateBookAsync(BookDto book);
         Task DeleteBookAsync(int id, bool trackChanges);

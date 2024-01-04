@@ -2,10 +2,107 @@
 @{
     ViewData["Title"] = "Books";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int currentPage = Convert.ToInt32(ViewBag.CurrentPage);
+    int totalPages = Convert.ToInt32(ViewBag.TotalPages);
 }
 
 
-<div class="row justify-content-center mt-5">
+<form asp-action="Index" asp-route-pageNumber="ViewBag.CurrentPage" method="get" class="row align-items-center justify-content-center">
+    <h3 class="heading">Filter and search</h3>
+    <div class="col-auto">
+        <input type="text" name="searchTerm" class="form-control" placeholder="Title Name">
+    </div>
+    <div class="col-auto">
+        <input type="text" name="minYear" class="form-control" placeholder="Min year">
+    </div>
+    <div class="col-auto">
+        <input type="text" name="maxYear" class="form-control" placeholder="Max year">
+    </div>
+    <div class="col-auto">
+        <select name="orderBy" id="orderBy" class="form-select">
+            <option value="year">year</option>
+            <option value="quantity">quantity</option>
+            <option value="title">title</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="createbtn w-button text-black">Search</button>
+    </div>
+</form>
+
+@if (User.IsInRole("Administrator"))
+{
+    <div class="text-center mt-3">
+
+        <a class="createbtn w-button text-black" asp-action="Create">Add new book</a>
+    </div>
+}
+
+<div id="w-node-_83b13cef-8d2e-7ead-2446-be009395b78c-4d8efa85" class="w-layout-layout quick-stack wf-layout-layout">
+    @foreach (var book in Model)
+    {
+        <div id="w-node-_83b13cef-8d2e-7ead-2446-be009395b78d-4d8efa85" class="w-layout-cell cell-2">
+            <div class="div-block-14">
+                <div class="div-block-13" style="background-image: url(@Url.Action("GetImage", "Books", new { id = book.Id })">
+                </div>
+                <div class="div-block-15">
+                    <p class="paragraph-3">
+                        @book.Title
+                    </p>
+                    <div class="div-block-16">
+                        <p class="aboutbookp">
+                            @book.AuthorName
+                        </p>
+                        <div class="div-block-21">
+                            <p class="aboutbookp">
+                                @book.Year
+                            </p>
+                            <p class="aboutbookp">
+                                @book.GenreName
+                            </p>
+                        </div>
+                        <div class="div-block-21">
+                        </div>
+                    </div>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <div class="div-block-19">
+                            <a class="editbtn w-button text-white" asp-action="Edit" asp-route-id="@book.Id">Edit</a>
+                            <a class="deletebtn w-button text-white" asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="align-center d-flex justify-content-center no-underline">
+    @for (int i = 1; i <= totalPages; i++)
+    {
+        bool isActive = (i == currentPage);
+        string activeClass = isActive ? "active" : "";
+        Index myIndex = ^1;
+
+        string currentUrl = Context.Request.QueryString.ToString();
+        // Добавьте или обновите параметр pageNumber в URL
+        if (currentUrl.Contains("pageNumber"))
+        {
+            currentUrl = currentUrl.Replace(currentUrl[^1].ToString(), i.ToString());
+        }
+        else
+        {
+            currentUrl = $"{currentUrl}&pageNumber={i}";
+        }
+
+        <a class="btn-sm btn-dark text-white rounded-circle m-2 no-underline @activeClass text-center align-content-center"
+           href="@currentUrl"
+           style="width: 30px; height: 30px;"> @i</a>
+    }
+</div>
+
+
+
+@* <div class="row justify-content-center mt-5">
     <div class="text-center">
         <h2>Books</h2>
         @if (User.IsInRole("Administrator"))
@@ -14,6 +111,30 @@
         }
     </div>
     <div class="col-md-12">
+        <form asp-action="Index" asp-route-pageNumber="ViewBag.CurrentPage" method="get" class="col-md-3 align-items-center">
+            <h3>Filter</h3>
+            <div>
+                <input type="text" name="searchTerm" class="form-control mb-2" placeholder="Title Name">
+            </div>
+            <div>
+                <input type="text" name="minYear" class="form-control mb-2" placeholder="Min year">
+            </div>
+            <div>
+                <input type="text" name="maxYear" class="form-control mb-2" placeholder="Max year">
+            </div>
+            <div>
+                <select name="orderBy" id="orderBy">
+                    <option value="year">year</option>
+                    <option value="quantity">quantity</option>
+                    <option value="title">title</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary mt-3">Search</button>
+            </div>
+        </form>
+
+
         <table class="table">
             <thead>
                 <tr>
@@ -50,21 +171,29 @@
                 }
             </tbody>
         </table>
+        <div class="text-center">
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                bool isActive = (i == currentPage);
+                string activeClass = isActive ? "active" : "";
+                Index myIndex = ^1;
+
+                string currentUrl = Context.Request.QueryString.ToString();
+                // Добавьте или обновите параметр pageNumber в URL
+                if (currentUrl.Contains("pageNumber"))
+                {
+                    currentUrl = currentUrl.Replace(currentUrl[^1].ToString(), i.ToString());
+                }
+                else
+                {
+                    currentUrl = $"{currentUrl}&pageNumber={i}";
+                }
+
+
+                <a class="btn-sm btn-primary m-2 no-underline @activeClass" href="@currentUrl">@i</a>
+            }
+        </div>
+
     </div>
 </div>
-
-@* <script>
-    $(document).ready(function () {
-        $('.author-name').each(function () {
-            var authorId = $(this).data('author-id');
-            var url = '@Url.Action("GetAuthor", "Authors")' + '?id=' + authorId;
-
-            // Выполняем AJAX-запрос для получения имени автора
-            $.get(url, function (data) {
-                $(this).text(data.authorName); // Предполагается, что сервер возвращает имя автора в свойстве authorName
-            });
-        });
-    });
-</script>
-
  *@

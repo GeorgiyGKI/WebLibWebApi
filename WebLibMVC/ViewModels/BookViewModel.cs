@@ -22,9 +22,11 @@ namespace WebLibMVC.ViewModels
         public string? GenreName { get; set; }
         [Range(1, 99)]
         public int Quantity { get; set; }
+        //in one class
         public IFormFile? Image { get; set; }
         public byte[]? ImageData { get; set; }
 
+        public (string orderBy, bool descending) SortBy { get; set; } 
         public List<SelectListItem>? Authors { get; set; } = new List<SelectListItem>();
         public List<SelectListItem>? Genres { get; set; } = new List<SelectListItem>();
     }

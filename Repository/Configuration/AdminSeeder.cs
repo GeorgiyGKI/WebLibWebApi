@@ -35,8 +35,8 @@ namespace Repository.Configuration
                     Email = "moderator@test.com",
 
                 };
-                await _userManager.CreateAsync(admin, "W0wPassw0rdF0rAdmin");
-                await _userManager.CreateAsync(moderator, "W0wPassw0rdF0rModerator");
+                await _userManager.CreateAsync(admin, "ForAdm1n");
+                await _userManager.CreateAsync(moderator, "ForM0derator");
 
                 await _userManager.AddToRoleAsync(admin, "Administrator");
                 await _userManager.AddToRoleAsync(moderator, "Moderator");
