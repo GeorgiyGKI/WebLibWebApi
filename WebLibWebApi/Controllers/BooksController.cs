@@ -10,7 +10,7 @@ namespace WebLibWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BooksController : ControllerBase
+    public class BooksController : ControllerBase   
     {
         private readonly IServiceManager _service;
 
